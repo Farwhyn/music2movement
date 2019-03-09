@@ -661,11 +661,11 @@ public class CommunicationController {
 	 */
 	private static void startTester(JFrame parentWindow) {
 		
-		setSampleRate(10000);
+		setSampleRate(1000);
 		setBaudRate(9600);
 		
-		Tester.populateDataStructure();
-		Tester.startTransmission();
+		m2mtester.populateDataStructure();
+		m2mtester.startTransmission();
 
 		Communication.testConnected = true;
 		notifyConnectionListeners();
@@ -680,9 +680,9 @@ public class CommunicationController {
 	 */
 	private static void stopTester() {
 		
-		Tester.stopTransmission();
-		Controller.removeAllCharts();
-		Controller.removeAllDatasets();
+		m2mtester.stopTransmission();
+		//Controller.removeAllCharts();
+		//Controller.removeAllDatasets();
 		
 		Communication.testConnected = false;
 		notifyConnectionListeners();

@@ -11,7 +11,7 @@ public class Main {
 		
 		try { UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName()); } catch(Exception e){}
 		
-		JFrame window = new JFrame("Telemetry Viewer v0.5");
+		JFrame window = new JFrame("Music to Movement");
 		NotificationsView notificationsRegion = new NotificationsView();
 		SettingsView settingsRegion = new SettingsView();
 		ControlsRegion controlsRegion = new ControlsRegion(settingsRegion);
