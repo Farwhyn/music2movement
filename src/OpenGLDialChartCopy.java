@@ -16,7 +16,7 @@ import com.jogamp.opengl.GL2;
  *     Dial minimum and maximum labels can be displayed.
  *     Statistics (mean and standard deviation) can be displayed.
  */
-public class OpenGLDialChart extends PositionedChart {
+public class OpenGLDialChartCopy extends PositionedChart {
 	
 	final int   dialResolution = 400; // how many quads to draw
 	final float dialThickness = 0.4f; // percentage of the radius
@@ -25,7 +25,6 @@ public class OpenGLDialChart extends PositionedChart {
 	boolean     autoscaleMax;
 	float       manualMin;
 	float       manualMax;
-	int position = 0;
 	
 	// plot region
 	float xPlotLeft;
@@ -174,7 +173,7 @@ public class OpenGLDialChart extends PositionedChart {
 	}
 
 	
-	public OpenGLDialChart(int x1, int y1, int x2, int y2) {
+	public OpenGLDialChartCopy(int x1, int y1, int x2, int y2) {
 		
 		super(x1, y1, x2, y2);
 		
@@ -216,13 +215,7 @@ public class OpenGLDialChart extends PositionedChart {
 	}
 	
 	@Override public void drawChart(GL2 gl, int width, int height, int lastSampleNumber, double zoomLevel, int mouseX, int mouseY) {
-		if(datasets[0].name == "Tap")
-			position = 0;
-		else if(datasets[0].name == "Squeeze")
-			position = 1;
-		else {
-			position = 2;
-		}
+		
 		// get the samples
 		int endIndex = lastSampleNumber;
 		int startIndex = endIndex - (int) (sampleCount * zoomLevel) + 1;
@@ -294,7 +287,7 @@ public class OpenGLDialChart extends PositionedChart {
 			return;
 		
 		if(showReadingLabel) {
-			readingLabel = ChartUtils.formattedNumber(Model.scores[position], 0) + " " + "Points";
+			readingLabel = ChartUtils.formattedNumber(lastSample, 6) + " " + datasets[0].unit;
 			readingLabelWidth = FontUtils.xAxisTextWidth(readingLabel);
 			xReadingLabelLeft = xCircleCenter - (readingLabelWidth / 2);
 			yReadingLabelBaseline = yPlotBottom;

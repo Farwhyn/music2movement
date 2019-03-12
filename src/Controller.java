@@ -22,6 +22,10 @@ public class Controller {
 		
 	}
 	
+	public static void addPoints(int i) {
+		Model.scores[i]++;
+	}
+	
 	/**
 	 * @param newFactor    The new display scaling factor.
 	 */

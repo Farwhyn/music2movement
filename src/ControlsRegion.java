@@ -104,19 +104,20 @@ public class ControlsRegion extends JPanel {
 			                  "Click the \"Save Layout\" button to save your current configuration (connection settings, data structure, and chart settings) to a file.<br>" +
 			                  "Click the \"Export CSV Log\" button to save all of your acquired samples to a CSV file.<br>" +
 			                  "Click the \"Reset\" button to remove all charts.<br><br>" +
-			                  "This software is free and open source.<br>" +
-			                  "Author: Farrell Farahbod</html>";
+			                  "This software is free and open source.</html>";
 			JLabel helpLabel = new JLabel(helpText);
+			/*
 			JButton websiteButton = new JButton("<html><a href=\"http://www.farrellf.com/TelemetryViewer/\">http://www.farrellf.com/TelemetryViewer/</a></html>");
 			websiteButton.addActionListener(new ActionListener() {
 				@Override public void actionPerformed(ActionEvent e) {
 					try { Desktop.getDesktop().browse(new URI("http://www.farrellf.com/TelemetryViewer/")); } catch(Exception ex) {}
 				}
 			});
+			*/
 			JPanel panel = new JPanel();
 			panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
 			panel.add(helpLabel);
-			panel.add(websiteButton);
+			//panel.add(websiteButton);
 			panel.add(new JLabel(" "));
 			JOptionPane.showMessageDialog(parentWindow, panel, "Help", JOptionPane.PLAIN_MESSAGE);
 

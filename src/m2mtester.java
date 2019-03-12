@@ -16,16 +16,59 @@ public class m2mtester {
 			@Override public void run() {
 				
 				double counter = 0;
+				int val1 = 10;
+				int val2 = 60;
+				int val3 = 10;
+				boolean incr1 = true;
+				boolean incr2 = false;
+				boolean incr3 = true;
 				
 				while(true) {
 					
 					try {
+						if(incr1) {
+							val1++;
+							if(val1 == 40) {
+								Controller.addPoints(0);
+								incr1=false;
+							}
+						}
+						else {
+							val1--;
+							if(val1 == 10)
+								incr1=true;	
+						}
+						if(incr2) {
+							val2++;
+							if(val2 == 60) {
+								Controller.addPoints(1);
+								incr2 = false;
+							}
+						}
+						else {
+							val2--;
+							if(val2 == 0)
+								incr2 = true;	
+						}
 						
-						float scalar = ((System.currentTimeMillis() % 30000) - 15000) / 100.0f;
+						if(incr3) {
+							val3+=2;
+							if(val3 == 80) {
+								Controller.addPoints(2);
+								incr3 = false;
+							}
+						}
+						else {
+							val3 -= 2;
+							if(val3 == 10)
+								incr3 = true;	
+						}
+						
+						//float scalar = ((System.currentTimeMillis() % 30000) - 15000) / 100.0f;
 						float[] newSamples = new float[] {
-							(System.nanoTime() % 100) * scalar * 1.0f / 14000f,
-							(System.nanoTime() % 100) * scalar * 0.8f / 14000f,
-							(System.nanoTime() % 100) * scalar * 0.6f / 14000f
+							val1,
+							val2,
+							val3
 						};
 						for(int i = 0; i < 10; i++) {
 							Controller.getDatasetByIndex(0).add(newSamples[0]);
